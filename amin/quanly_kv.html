@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QL Khoa Vien</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style/styles_account.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Toggle Button -->
+    <button id="toggle-button" class="toggle-button">☰</button>
+
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard" id="dashboard">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <h2>QL Khoa Viện</h2>
+      </div>
+      <!-- Navigation Menu -->
+      <ul class="dashboard-menu">
+        <li>
+          <a href="./home.html" title="Home"
+            ><i class="fas fa-home"></i><span>Home</span></a
+          >
+        </li>
+        <li>
+          <a href="./account_sv.html" title="Account sinh viên"
+            ><i class="fas fa-user-graduate"></i
+            ><span>Account sinh viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./account_gv.html" title="Account giảng viên"
+            ><i class="fas fa-chalkboard-teacher"></i
+            ><span>Account giảng viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_kv.html" title="Quản lý khoa viên"
+            ><i class="fas fa-school"></i><span>Quản lý khoa viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_tkb.html" title="Quản lý thời khóa biểu"
+            ><i class="fas fa-calendar-day"></i
+            ><span>Quản lý thời khóa biểu</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_dd.html" title="Quản lý điểm danh"
+            ><i class="fas fa-check-circle"></i
+            ><span>Quản lý điểm danh</span></a
+          >
+        </li>
+        <li>
+          <a href="./settings.html" title="Settings"
+            ><i class="fas fa-cog"></i><span>Settings</span></a
+          >
+        </li>
+        <li>
+          <a href="./dangnhap.html" title="Logout"
+            ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h2>Danh sách khoa viện</h2>
+      <button id="add-account-button" class="add-account-button">
+        Thêm khoa viện
+      </button>
+      <table id="khoavien-table" class="user-info-table">
+        <thead>
+          <tr>
+            <th>Mã khoa viện</th>
+            <th>Tên khoa viện</th>
+            <th>Điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Số lớp</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dữ liệu sẽ được chèn bằng JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="addKhoaVienModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Thêm khoa viện mới</h2>
+        <form id="khoaVienForm">
+          <!-- <div class="form-group">
+            <label for="makv">Mã khoa viện:</label>
+            <input type="text" id="makv" name="makv" required />
+          </div> -->
+          <div class="form-group">
+            <label for="tenkv">Tên khoa viện:</label>
+            <input type="text" id="tenkv" name="tenkv" required />
+          </div>
+          <!-- <div class="form-group">
+            <label for="dtkv">Điện thoại:</label>
+            <input type="tel" id="dtkv" name="dtkv" required />
+          </div> -->
+          <div class="form-group">
+            <label for="diaChi">Địa chỉ:</label>
+            <input type="text" id="diaChi" name="diaChi" required />
+          </div>
+          <!-- <div class="form-group">
+            <label for="soLop">Số lớp:</label>
+            <input type="number" id="soLop" name="soLop" required />
+          </div> -->
+          <button type="submit" class="submit-btn">Thêm khoa viện</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="createKhoaVienModal" class="modal1" style="display: none">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Sửa khoa viện mới</h2>
+        <form id="khoaVienForm">
+          <div class="form-group">
+            <label for="makv">Mã khoa viện:</label>
+            <input type="text" id="makv" name="makv" required />
+          </div>
+          <div class="form-group">
+            <label for="tenkv">Tên khoa viện:</label>
+            <input type="text" id="tenkv" name="tenkv" required />
+          </div>
+          <div class="form-group">
+            <label for="dtkv">Điện thoại:</label>
+            <input type="tel" id="dtkv" name="dtkv" required />
+          </div>
+          <div class="form-group">
+            <label for="diaChi">Địa chỉ:</label>
+            <input type="text" id="diaChi" name="diaChi" required />
+          </div>
+          <!-- <div class="form-group">
+            <label for="soLop">Số lớp:</label>
+            <input type="number" id="soLop" name="soLop" required />
+          </div> -->
+          <button type="submit" class="submit-btn">Lưu khoa viện</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/quanly_kv.js"></script>
+  </body>
+</html>

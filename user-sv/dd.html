@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Điểm danh bằng Face ID</title>
+  <link rel="stylesheet" href="../style/style_dd.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div class="face-id-container">
+    <h2>Điểm danh bằng Face ID</h2>
+
+    <div class="camera-frame">
+      <video id="camera" autoplay playsinline></video>
+      <div class="face-outline"></div>
+    </div>
+
+    <button id="start-btn" class="start-button">Bắt đầu điểm danh</button>
+    <p class="status-text" id="status-text">Chưa khởi động</p>
+
+    <a href="home_sv_TES.html" class="back-link"><i class="fas fa-arrow-left"></i> Quay lại</a>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById("start-btn");
+    const video = document.getElementById("camera");
+    const statusText = document.getElementById("status-text");
+    const cameraFrame = document.querySelector(".camera-frame");
+  
+    startBtn.addEventListener("click", async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+  
+        // Thêm lớp "active" để kích hoạt hiệu ứng
+        cameraFrame.classList.add("active");
+        statusText.classList.add("active");
+  
+        statusText.textContent = "Đang nhận diện khuôn mặt...";
+      } catch (err) {
+        statusText.textContent = "Không thể truy cập camera.";
+        statusText.style.color = "red";
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

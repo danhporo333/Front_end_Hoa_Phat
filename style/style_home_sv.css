@@ -1,0 +1,225 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .toggle-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  .dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s, opacity 0.3s;
+    overflow: hidden;
+  }
+  
+  .dashboard.collapsed {
+    width: 60px;
+  }
+  
+  .dashboard-header h2 {
+    margin: 0;
+    padding: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: opacity 0.3s;
+  }
+  
+  .dashboard.collapsed .dashboard-header h2 {
+    opacity: 0;
+  }
+  
+  .dashboard-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  .dashboard-menu li {
+    text-align: center;
+  }
+  
+  .dashboard-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: background-color 0.3s, opacity 0.3s;
+  }
+  
+  .dashboard-menu a i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  .dashboard.collapsed .dashboard-menu a span {
+    display: none;
+  }
+  
+  .dashboard.collapsed .dashboard-menu a {
+    justify-content: center;
+  }
+  
+  .dashboard-menu a:hover {
+    background-color: #1abc9c;
+  }
+  
+  /* Main content */
+.main-content {
+  margin-left: 260px;
+  padding: 30px;
+  background-color: #f9f9f9; /* Thêm nền sáng */
+  border-radius: 10px; /* Bo góc */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  transition: margin-left 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng mượt */
+}
+
+.dashboard.collapsed ~ .main-content {
+  margin-left: 70px;
+  transform: scale(0.98); /* Thu nhỏ nhẹ khi dashboard thu gọn */
+}
+
+.main-content h2 {
+  font-size: 28px; /* Tăng kích thước chữ */
+  margin-bottom: 15px; /* Tăng khoảng cách dưới */
+  color: #2c3e50; /* Màu chữ đậm */
+  text-align: center; /* Căn giữa tiêu đề */
+  text-transform: uppercase; /* Chữ in hoa */
+  letter-spacing: 1px; /* Khoảng cách giữa các chữ */
+}
+
+.main-content p {
+  font-size: 16px;
+  line-height: 1.6; /* Tăng khoảng cách dòng */
+  color: #555; /* Màu chữ dễ đọc */
+  margin-bottom: 20px;
+}
+
+.main-content .content-card {
+  background-color: #ffffff; /* Nền trắng cho từng khối nội dung */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-content .content-card:hover {
+  transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1); /* Tăng đổ bóng khi hover */
+}
+  
+  .week-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .week-control button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .week-control button:hover {
+    background-color: #2980b9;
+  }
+  
+  .schedule-card {
+    background-color: #fff;
+    border-left: 5px solid #3498db;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  
+  .day {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .red {
+    color: #e74c3c;
+  }
+  
+  .class-info div {
+    margin: 5px 0;
+  }
+
+  
+
+  .schedule-card {
+    border: 1px solid #e0e0e0;
+    border-left: 6px solid #007bff;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+  
+  .schedule-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    background-color: #f8faff;
+  }
+  
+  .schedule-card .day {
+    font-weight: bold;
+    font-size: 16px;
+    color: #d9534f;
+    margin-bottom: 8px;
+  }
+  
+  .schedule-card .class-info div {
+    margin: 4px 0;
+    font-size: 15px;
+    color: #333;
+  }
+  .dd-btn {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 18px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dd-btn:hover {
+    background-color: #1e7e34;
+  }
+  

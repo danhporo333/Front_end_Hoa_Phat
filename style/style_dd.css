@@ -1,0 +1,110 @@
+/* Reset mặc định */
+body, h2, p, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .face-id-container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .camera-frame {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Thêm hiệu ứng mượt */
+  }
+  
+  .camera-frame.active {
+    transform: scale(1.1); /* Phóng to nhẹ khi bắt đầu điểm danh */
+    opacity: 1; /* Đảm bảo hiển thị rõ */
+  }
+  
+  video {
+    width: 100%;
+    height: auto;
+    display: auto;
+  }
+  
+  .face-outline {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border: 2px dashed #00ff00;
+    border-radius: 10px;
+    pointer-events: none;
+  }
+  
+  .start-button {
+    display: inline-block;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-button:hover {
+    background-color: #16a085;
+  }
+  
+  /* Hiệu ứng mượt cho trạng thái */
+.status-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+    transition: color 0.5s ease, transform 0.5s ease; /* Thêm hiệu ứng mượt */
+  }
+  
+  .status-text.active {
+    transform: translateY(-10px); /* Dịch chuyển nhẹ lên trên */
+    color: green; /* Đổi màu sang xanh lá */
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .back-link:hover {
+    color: #2980b9;
+  }
+  

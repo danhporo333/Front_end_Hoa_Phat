@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết buổi học</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style/style_home_sv.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Toggle Button -->
+    <button id="toggle-button" class="toggle-button">☰</button>
+
+    <!-- Sidebar -->
+    <div class="dashboard" id="dashboard">
+      <div class="dashboard-header">
+        <h2>Dashboard</h2>
+      </div>
+      <ul class="dashboard-menu">
+        <li><a href="../amin/home.html"><i class="fas fa-home"></i><span>Home</span></a></li>
+        <li><a href="../amin/quanly_tkb.html"><i class="fas fa-calendar-day"></i><span> thời khóa biểu</span></a></li>
+        <li><a href="../amin/quanly_dd.html"><i class="fas fa-check-circle"></i><span> điểm danh</span></a></li>
+        <li><a href="../amin/settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+        <li><a href="../amin/dangnhap.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h2>Chi tiết buổi học</h2>
+      <div id="details" class="schedule-detail-card">
+        
+        <!-- Nội dung sẽ được render bằng JavaScript -->
+      </div>
+      <a href="home_sv_TES.html" class="back-link">← Quay lại thời khóa biểu</a>
+    </div>
+
+    <!-- Script -->
+    <script>
+      
+      // Toggle sidebar
+      document.getElementById('toggle-button').addEventListener('click', () => {
+        document.getElementById('dashboard').classList.toggle('collapsed');
+      });
+
+      // Lấy dữ liệu từ URL và hiển thị chi tiết
+      const params = new URLSearchParams(window.location.search);
+      const day = params.get("day");
+      const tiet = params.get("tiet");
+      const mon = params.get("mon");
+      const phong = params.get("phong");
+
+      const detailsDiv = document.getElementById("details");
+
+      if (day && tiet && mon && phong) {
+        detailsDiv.innerHTML = `
+       <p><strong>Ngày học:</strong> ${day}</p>
+    <p><strong>Tiết:</strong> ${tiet}</p>
+    <p><strong>Môn học:</strong> ${mon}</p>
+    <p><strong>Phòng học:</strong> ${phong}</p>
+    <a class="face-id-link" href="dd.html?day=${encodeURIComponent(day)}&tiet=${encodeURIComponent(tiet)}&mon=${encodeURIComponent(mon)}&phong=${encodeURIComponent(phong)}">
+      👉 Điểm danh bằng Face ID
+    </a>
+  `;
+      } else {
+        detailsDiv.innerHTML = `<p style="color: red;">Không tìm thấy thông tin chi tiết buổi học.</p>`;
+      }
+    </script>
+  </body>
+</html>

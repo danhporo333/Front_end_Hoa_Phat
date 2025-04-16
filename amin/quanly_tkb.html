@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý thời khóa biểu</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style/styles_account.css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Toggle Button -->
+    <button id="toggle-button" class="toggle-button">☰</button>
+
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard" id="dashboard">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <h2>QL TKB</h2>
+      </div>
+      <!-- Navigation Menu -->
+      <ul class="dashboard-menu">
+        <li><a href="./home.html" title="Home"><i class="fas fa-home"></i><span>Home</span></a></li>
+        <li><a href="./account_sv.html" title="Account sinh viên"><i class="fas fa-user-graduate"></i><span>Account sinh viên</span></a></li>
+        <li><a href="./account_gv.html" title="Account giảng viên"><i class="fas fa-chalkboard-teacher"></i><span>Account giảng viên</span></a></li>
+        <li><a href="./quanly_kv.html" title="Quản lý khoa viên"><i class="fas fa-school"></i><span>Quản lý khoa viên</span></a></li>
+        <li><a href="./quanly_tkb.html" title="Quản lý thời khóa biểu"><i class="fas fa-calendar-day"></i><span>Quản lý thời khóa biểu</span></a></li>
+        <li><a href="./quanly_dd.html" title="Quản lý điểm danh"><i class="fas fa-check-circle"></i><span>Quản lý điểm danh</span></a></li>
+        <li><a href="./settings.html" title="Settings"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+        <li><a href="./dangnhap.html" title="Logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Quản lý thời khóa biểu</h2>
+        <button id="add-schedule-button" class="add-account-button">Thêm thời khóa biểu</button>
+        <table id="thoikhoabieu-table" class="user-info-table">
+          <thead>
+            <tr>
+              <th>Mã lớp</th>
+              <th>Tên môn</th>
+              <th>Phòng</th>
+              <th>Thời gian</th>
+              <th>Giảng viên</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dữ liệu sẽ được chèn bằng JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Fetch schedule data from the API
+        fetch('https://mybackend.loca.lt/v1/api/thoikhoabieu')
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.data && data.data.thoikhoabieu) {
+              const tkbList = data.data.thoikhoabieu;
+              const tableBody = document.querySelector('#thoikhoabieu-table tbody');
+      
+              // Clear existing rows
+              tableBody.innerHTML = '';
+      
+              // Populate table with schedule data
+              tkbList.forEach(tkb => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                  <td>${tkb.malop}</td>
+                  <td>${tkb.tenmon}</td>
+                  <td>${tkb.phong}</td>
+                  <td>${tkb.thoigian}</td>
+                  <td>${tkb.giangvien}</td>
+                `;
+                tableBody.appendChild(row);
+              });
+            } else {
+              console.error("Dữ liệu trả về không đúng định dạng.");
+            }
+          })
+          .catch(error => {
+            console.error("Lỗi khi gọi API:", error);
+          });
+      
+      // Toggle dashboard collapse
+      const toggleButton = document.getElementById('toggle-button');
+      const dashboard = document.getElementById('dashboard');
+      toggleButton.addEventListener('click', () => {
+        dashboard.classList.toggle('collapsed');
+      });
+
+      // Add Schedule Button Click Event
+      const addScheduleButton = document.getElementById('add-schedule-button');
+      addScheduleButton.addEventListener('click', () => {
+        alert('Chức năng thêm thời khóa biểu!');
+      });
+    </script>
+  </body>
+</html>

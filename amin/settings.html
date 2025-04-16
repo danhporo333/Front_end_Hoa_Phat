@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="../style/settings.css">
+</head>
+<body>
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard" id="dashboard">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+          <h2>Settings</h2>
+        </div>
+        <!-- Navigation Menu -->
+        <ul class="dashboard-menu">
+          <li><a href="./home.html" title="Home"><i class="fas fa-home"></i><span>Home</span></a></li>
+          <li><a href="./account_sv.html" title="Account sinh viên"><i class="fas fa-user-graduate"></i><span>Account sinh viên</span></a></li>
+          <li><a href="./account_gv.html" title="Account giảng viên"><i class="fas fa-chalkboard-teacher"></i><span>Account giảng viên</span></a></li>
+          <li><a href="./quanly_kv.html" title="Quản lý khoa viên"><i class="fas fa-school"></i><span>Quản lý khoa viên</span></a></li>
+          <li><a href="./quanly_tkb.html" title="Quản lý thời khóa biểu"><i class="fas fa-calendar-day"></i><span>Quản lý thời khóa biểu</span></a></li>
+          <li><a href="./quanly_dd.html" title="Quản lý điểm danh"><i class="fas fa-check-circle"></i><span>Quản lý điểm danh</span></a></li>
+          <li><a href="./settings.html" title="Settings"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+          <li><a href="./dangnhap.html" title="Logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+        </ul>
+      </div>
+    <div class="settings-container">
+        <h1>Thông Tin Cá Nhân</h1>
+        <p>Chỉnh sửa thông tin cá nhân của bạn.</p>
+        <div class="profile">
+            <img src="../img/avatar-placeholder.png" alt="Ảnh đại diện" class="avatar" id="avatar-preview">
+            <div class="info">
+                <p><strong>Họ Tên:</strong> Nguyễn Văn A</p>
+                <p><strong>MSSV:</strong> 123456789</p>
+                <p><strong>Email:</strong> nguyenvana@example.com</p>
+            </div>
+        </div>
+        <!-- Input để upload ảnh -->
+        <input type="file" id="avatar-upload" accept="image/*">
+    </div>
+</body>
+</html>
+
+
+<!-- Code JavaScript để hiển thị ảnh đã chọn -->
+<script>
+    const avatarUpload = document.getElementById('avatar-upload');
+    const avatarPreview = document.getElementById('avatar-preview');
+
+    avatarUpload.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                avatarPreview.src = e.target.result; // Hiển thị ảnh đã chọn
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

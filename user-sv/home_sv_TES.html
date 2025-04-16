@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../style/style_home_sv.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Toggle Button -->
+    <button id="toggle-button" class="toggle-button">☰</button>
+
+    <!-- Sidebar -->
+    <div class="dashboard" id="dashboard">
+      <div class="dashboard-header">
+        <h2>Dashboard</h2>
+      </div>
+      <ul class="dashboard-menu">
+        <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
+        <li><a href="#"><i class="fas fa-calendar-day"></i><span> thời khóa biểu</span></a></li>
+        <li><a href="#"><i class="fas fa-check-circle"></i><span> điểm danh</span></a></li>
+        <li><a href="#"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+        <li><a href="#"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h2>Thời khóa biểu</h2>
+      <div class="week-control">
+        <button id="prev-week">&lt;</button>
+        <span id="week-range">21/04/2025 đến 27/04/2025</span>
+        <button id="next-week">&gt;</button>
+      </div>
+
+      <div id="schedule-container">
+        <!-- Thời khóa biểu sẽ được chèn ở đây -->
+      </div>
+    </div>
+
+    <script>
+      const toggleButton = document.getElementById('toggle-button');
+      const dashboard = document.getElementById('dashboard');
+      toggleButton.addEventListener('click', () => {
+        dashboard.classList.toggle('collapsed');
+      });
+
+      const weekRange = document.getElementById("week-range");
+      const prevBtn = document.getElementById("prev-week");
+      const nextBtn = document.getElementById("next-week");
+      const scheduleContainer = document.getElementById("schedule-container");
+
+      let currentDate = new Date("2025-04-21");
+
+      const scheduleData = {
+        "2025-04-21": [
+          { day: "Thứ 3, 22/04/2025", tiet: "13-15", mon: "Thể hình - Thẩm mỹ 3", phong: "A-09.02/1" },
+          { day: "Thứ 6, 25/04/2025", tiet: "13-15", mon: "Thể hình - Thẩm mỹ 3", phong: "A-09.02/1" },
+        ],
+        // Thêm dữ liệu tuần khác nếu muốn
+      };
+
+      function formatDate(date) {
+        const d = date.getDate().toString().padStart(2, '0');
+        const m = (date.getMonth() + 1).toString().padStart(2, '0');
+        const y = date.getFullYear();
+        return `${d}/${m}/${y}`;
+      }
+
+      function getWeekKey(date) {
+        return formatDate(date).split('/').reverse().join('-');
+      }
+
+      function renderSchedule() {
+  scheduleContainer.innerHTML = "";
+  const key = getWeekKey(currentDate);
+  const schedule = scheduleData[key];
+
+  if (schedule && schedule.length > 0) {
+    schedule.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "schedule-card";
+      div.innerHTML = `
+        <div class="day red">${item.day}</div>
+        <div class="class-info">
+          <div><strong>Tiết:</strong> ${item.tiet}</div>
+          <div><strong>Môn:</strong> ${item.mon}</div>
+          <div><strong>Phòng:</strong> ${item.phong}</div>
+        </div>
+      `;
+      // Khi click thì chuyển trang kèm query string
+      div.addEventListener("click", () => {
+        const params = new URLSearchParams({
+          day: item.day,
+          tiet: item.tiet,
+          mon: item.mon,
+          phong: item.phong
+        });
+        window.location.href = `ct_tkb.html?${params.toString()}`;
+      });
+
+      scheduleContainer.appendChild(div);
+    });
+  } else {
+    scheduleContainer.innerHTML = "<p>Không có lịch học cho tuần này.</p>";
+  }
+}
+
+
+      function updateWeekRange() {
+        const startOfWeek = new Date(currentDate);
+        const endOfWeek = new Date(currentDate);
+        endOfWeek.setDate(endOfWeek.getDate() + 6);
+        weekRange.textContent = `${formatDate(startOfWeek)} đến ${formatDate(endOfWeek)}`;
+        renderSchedule();
+      }
+
+      prevBtn.addEventListener("click", () => {
+        currentDate.setDate(currentDate.getDate() - 7);
+        updateWeekRange();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentDate.setDate(currentDate.getDate() + 7);
+        updateWeekRange();
+      });
+
+      updateWeekRange();
+      
+    </script>
+  </body>
+</html>

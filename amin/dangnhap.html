@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐĂNG NHẬP</title>
+    <link rel="stylesheet" href="../style/styles_login_register.css">
+</head>
+<body>
+    <div class="images/logo-HUTECH"></div>
+    <div class="login-container">
+        <img src="../img/logo CMYK-01.png" alt="Logo" class="logo">
+        <form action="#" method="POST">
+            <h2>ĐĂNG NHẬP HỆ THỐNG</h2>
+            <input type="text" id="username" name="username" placeholder="Mã số sinh viên" required>
+            <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+            <button type="button" id="login-button">Đăng nhập</button> <!-- Đổi type thành "button" -->
+            <p>Quên mật khẩu? <a href="./quenmatkhau.html">Xác nhận</a></p>
+        </form>
+    </div>
+</body>
+</html>   
+
+
+<script>
+    // Mật khẩu mặc định
+    const DEFAULT_USERNAME = "123";
+    const DEFAULT_PASSWORD = "123";
+
+    // Lấy các phần tử DOM
+    const loginButton = document.getElementById('login-button');
+    const usernameField = document.getElementById('username');
+    const passwordField = document.getElementById('password');
+
+    // Hàm xử lý đăng nhập
+    const handleLogin = () => {
+        const username = usernameField.value.trim();
+        const password = passwordField.value.trim();
+
+        // Kiểm tra thông tin đăng nhập
+        if (username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD) {
+            // Chuyển hướng đến trang home.html
+            window.location.href = "./home.html"; // Đường dẫn đến trang home.html
+        } else {
+            alert("Tên đăng nhập hoặc mật khẩu không đúng!");
+        }
+    };
+
+    // Xử lý sự kiện khi nhấn nút "Đăng nhập"
+    loginButton.addEventListener('click', handleLogin);
+
+    // Xử lý sự kiện khi nhấn phím "Enter"
+    document.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") {
+            handleLogin();
+        }
+    });
+</script>

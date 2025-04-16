@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../style/styles_home.css" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Toggle Button -->
+    <button id="toggle-button" class="toggle-button">☰</button>
+
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard" id="dashboard">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <h2>Trang Chủ</h2>
+      </div>
+      <!-- Navigation Menu -->
+      <ul class="dashboard-menu">
+        <li>
+          <a href="./home.html" title="Home"
+            ><i class="fas fa-home"></i><span>Home</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_kv.html" title="Quản lý khoa Viện"
+            ><i class="fas fa-school"></i><span>Quản lý khoa viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./account_sv.html" title="Account sinh viên"
+            ><i class="fas fa-user-graduate"></i
+            ><span>Account sinh viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./account_gv.html" title="Account giảng viên"
+            ><i class="fas fa-chalkboard-teacher"></i
+            ><span>Account giảng viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_tkb.html" title="Quản lý thời khóa biểu"
+            ><i class="fas fa-calendar-day"></i
+            ><span>Quản lý thời khóa biểu</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_dd.html" title="Quản lý điểm danh"
+            ><i class="fas fa-check-circle"></i
+            ><span>Quản lý điểm danh</span></a
+          >
+        </li>
+        <li>
+          <a href="./settings.html" title="Settings"
+            ><i class="fas fa-cog"></i><span>Settings</span></a
+          >
+        </li>
+        <li>
+          <a href="./dangnhap.html" title="Logout"
+            ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1></h1>
+      <p>CHÀO MỪNG ĐẾN VỚI TRƯỜNG ĐẠI HỌC CÔNG NGHỆ TP.HCM</p>
+      <img src="../img/welcome-icon.png" alt="Logo" class="logo" />
+      <img src="../img/logo CMYK-01.png" alt="Logo" class="logo" />
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Get DOM elements
+      const toggleButton = document.getElementById("toggle-button");
+      const dashboard = document.getElementById("dashboard");
+
+      // Toggle dashboard collapse
+      toggleButton.addEventListener("click", () => {
+        dashboard.classList.toggle("collapsed");
+      });
+    </script>
+  </body>
+</html>
