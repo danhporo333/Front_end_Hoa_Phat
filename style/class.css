@@ -1,0 +1,363 @@
+/* General Styles */
+body {
+  margin: 0;
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.toggle-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: #34495e;
+  color: #ecf0f1;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.dashboard {
+  width: 250px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  height: 100vh;
+  transition: width 0.3s;
+  overflow: hidden;
+}
+
+.dashboard.collapsed {
+  width: 60px;
+}
+
+.dashboard-header {
+  padding: 20px;
+  text-align: center;
+  background-color: #34495e;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+  transition: opacity 0.3s;
+}
+
+.dashboard.collapsed .dashboard-header h2 {
+  opacity: 0;
+}
+
+.dashboard-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-menu li {
+  text-align: center;
+}
+
+.dashboard-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.dashboard-menu a i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.dashboard.collapsed .dashboard-menu a span {
+  display: none;
+}
+
+.dashboard.collapsed .dashboard-menu a {
+  justify-content: center;
+}
+
+.dashboard-menu a:hover {
+  background-color: #1abc9c;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+.class-info-table th,
+.class-info-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.class-info-table th {
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+.class-info-table td {
+  background-color: #f9f9f9;
+}
+.add-account-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.add-account-button:hover {
+  background-color: #16a085;
+}
+
+/* Container tổng */
+.register-container {
+  width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Tiêu đề chính */
+.register-container h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Tiêu đề phụ */
+.register-container h2 {
+  text-align: center;
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.register-container h2 i {
+  margin-right: 8px;
+  color: #007bff;
+}
+
+/* Form */
+form {
+  width: 100%;
+}
+
+/* Nhóm form */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Label */
+.form-group label {
+  width: 180px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon trong label */
+.form-group label i {
+  margin-right: 8px;
+  color: #444;
+}
+
+/* Input, select */
+.form-group input,
+.form-group select {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Button lưu */
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+.modal .form-group {
+  margin-bottom: 15px;
+}
+
+.modal .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.modal .submit-btn {
+  background-color: #1abc9c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal .submit-btn:hover {
+  background-color: #16a085;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+  margin-right: 5px;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.modal1 {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal1 .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.modal1 .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal1 .close:hover {
+  color: black;
+}
+
+.modal1 .form-group {
+  margin-bottom: 15px;
+}
+
+.modal1 .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.modal1 .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.modal1 .submit-btn {
+  background-color: #1abc9c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal1 .submit-btn:hover {
+  background-color: #16a085;
+}

@@ -1,3 +1,5 @@
+import { BASE_URL } from "./config.js"; // Import BASE_URL from config.js
+
 // Get DOM elements
 const toggleButton = document.getElementById("toggle-button");
 const dashboard = document.getElementById("dashboard");
@@ -27,9 +29,6 @@ window.addEventListener("click", (event) => {
     modal.style.display = "none";
   }
 });
-
-//api url
-const BASE_URL = "http://localhost:8000";
 
 // Gọi API để lấy danh sách khoa viện
 fetch(`${BASE_URL}/v1/api/all`)

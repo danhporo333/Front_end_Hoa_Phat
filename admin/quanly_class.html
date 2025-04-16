@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/class.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="toggle-button" class="toggle-button">☰</button>
+
+    <!-- Dashboard Sidebar -->
+    <div class="dashboard" id="dashboard">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <h2>lớp học</h2>
+      </div>
+      <!-- Navigation Menu -->
+      <ul class="dashboard-menu">
+        <li>
+          <a href="./home.html" title="Home"
+            ><i class="fas fa-home"></i><span>Home</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_kv.html" title="Quản lý khoa Viện"
+            ><i class="fas fa-school"></i><span>Quản lý khoa viện</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_class.html" title="Quản lý lớp học"
+            ><i class="fas fa-user-graduate"></i><span>Quản lý lớp học</span></a
+          >
+        </li>
+        <li>
+          <a href="./account_sv.html" title="Account sinh viên"
+            ><i class="fas fa-user-graduate"></i
+            ><span>Account sinh viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./account_gv.html" title="Account giảng viên"
+            ><i class="fas fa-chalkboard-teacher"></i
+            ><span>Account giảng viên</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_tkb.html" title="Quản lý thời khóa biểu"
+            ><i class="fas fa-calendar-day"></i
+            ><span>Quản lý thời khóa biểu</span></a
+          >
+        </li>
+        <li>
+          <a href="./quanly_dd.html" title="Quản lý điểm danh"
+            ><i class="fas fa-check-circle"></i
+            ><span>Quản lý điểm danh</span></a
+          >
+        </li>
+        <li>
+          <a href="./settings.html" title="Settings"
+            ><i class="fas fa-cog"></i><span>Settings</span></a
+          >
+        </li>
+        <li>
+          <a href="./dangnhap.html" title="Logout"
+            ><i class="fas fa-sign-out-alt"></i><span>Logout</span></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h2>Danh sách lớp</h2>
+      <button id="add-class-button" class="add-account-button">Thêm lớp</button>
+      <table id="class-table" class="class-info-table">
+        <thead>
+          <tr>
+            <th>Mã lớp</th>
+            <th>Tên lớp</th>
+            <th>Sĩ số</th>
+            <th>Khoa viện</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dữ liệu sẽ được chèn bằng JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal for Adding Class -->
+    <div id="addClassModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Thêm lớp mới</h2>
+        <form id="classForm">
+          <div class="form-group">
+            <label for="tenlop">Tên lớp:</label>
+            <input type="text" id="tenlop" name="tenlop" required />
+          </div>
+          <div class="form-group">
+            <label for="siso">Sĩ số:</label>
+            <input type="number" id="siso" name="siso" required />
+          </div>
+          <div class="form-group">
+            <label for="makv">Khoa viện:</label>
+            <select id="makv" name="makv" required></select>
+          </div>
+          <button type="submit" class="submit-btn">Thêm lớp</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for Editing Class -->
+    <div id="editClassModal" class="modal1">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Sửa lớp</h2>
+        <form id="editClassForm">
+          <div class="form-group">
+            <label for="editmalop">Mã lớp:</label>
+            <input type="text" id="editmalop" name="editmalop" readonly />
+          </div>
+          <div class="form-group">
+            <label for="edittenlop">Tên lớp:</label>
+            <input type="text" id="edittenlop" name="edittenlop" required />
+          </div>
+          <div class="form-group">
+            <label for="editsiso">Sĩ số:</label>
+            <input type="number" id="editsiso" name="editsiso" required />
+          </div>
+          <div class="form-group">
+            <label for="editkv">Khoa viện:</label>
+            <select id="editkv" name="editkv" required></select>
+          </div>
+          <button type="submit" class="submit-btn">Lưu lớp</button>
+        </form>
+      </div>
+    </div>
+    <!-- javascript -->
+    <script type="module" src="../js/quanly_lop.js"></script>
+  </body>
+</html>
